@@ -2,14 +2,16 @@
 
 The design portfolio of **Saadia Asghar**, product & visual designer. Figma product work and Canva campaign design, in one place.
 
-- **Product design (Figma):** Vyrothon (1st, product design), CallPilot (Top 10, MIT Hack-Nation), ChaInTicket+ (3rd, BASED Pakistan), PrivyHealth, MoodMaze. Each has its own case-study page at `/work/<slug>/`.
-- **Visual design (Canva):** posters, banners, signage, and lesson decks for Microsoft Club GIKI, UROG, ACM GIKI, and PreMed.PK, with team filters and a full-size viewer.
-- An all-access event pass on a swinging lanyard (click it to turn it over), a live Islamabad clock, and an Urdu greeting.
-- "Choose your avatar": visitors pick Product or Visual designer, and that section moves first.
-- A results board with one line per product file, a side-quests carousel, sticky-note process, quirk cards, a year-in-an-envelope letter, and a dark mode.
-- Process, design roles, tools, certifications, and contact.
+Layout: a paper-and-ink site with four flat colours (blue, yellow, green, red) and handwritten headings.
 
-Stack: Next.js (static export), TypeScript, hand-written CSS, self-hosted fonts (Bricolage Grotesque, Instrument Serif, Inter).
+- **Home:** a hand-drawn desk scene with four app tiles on the monitor (Work, Play, Me, Résumé). Click the lamp for dark mode; open the desk drawer for a note. A live Islamabad clock sits in the top bar.
+- **Projects:** square cards for Vyrothon, CallPilot, ChaInTicket+, PrivyHealth, MoodMaze, and the Canva poster wall, each with coloured tags. Each product opens a case page at `/work/<slug>/`.
+- **Areas of interest:** a green section with a "currently obsessed with" card and a random fact.
+- **Play** (`/play/`): the Canva gallery with team filters and a full-size viewer.
+- **About Me** (`/about/`): design roles, results, process, toolbox, certifications, and 2026 so far.
+- **Footer:** a message box that opens your email app, plus links.
+
+Stack: Next.js (static export), TypeScript, hand-written CSS, self-hosted fonts (Gochi Hand, Work Sans, DM Mono).
 
 ## Run it locally
 
