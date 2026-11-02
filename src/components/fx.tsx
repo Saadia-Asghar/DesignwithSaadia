@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { play } from "@/lib/sound";
 
 /**
  * Page-wide playful effects:
@@ -30,8 +31,13 @@ export function Fx() {
     // ---- click sparkles ----
     const colors = ["#2b6cb0", "#e6b94f", "#2f855a", "#c4473a"];
     const onDown = (e: PointerEvent) => {
-      if (reduce) return;
       const t = e.target as HTMLElement;
+      // sounds (only when the visitor has turned sound on)
+      if (t.closest(".lamp-hit")) play("switch");
+      else if (t.closest(".drawer-hit")) play("drawer");
+      else if (t.closest("a, button") && !t.closest(".sound")) play("pop");
+      else play("scribble");
+      if (reduce) return;
       if (t.closest("input, textarea, .lightbox")) return;
       const burst = document.createElement("span");
       burst.className = "spark";
@@ -78,10 +84,24 @@ export function Fx() {
     };
     window.addEventListener("pointermove", onMove, { passive: true });
 
+    // ---- hover ticks ----
+    let lastHover: Element | null = null;
+    let lastTick = 0;
+    const onOver = (e: PointerEvent) => {
+      const el = (e.target as HTMLElement)?.closest?.(".tile-app, .card, .tile, .sticker, .now-card, .chip, .pillnav a");
+      if (el && el !== lastHover && performance.now() - lastTick > 70) {
+        lastTick = performance.now();
+        play("tick");
+      }
+      lastHover = el;
+    };
+    window.addEventListener("pointerover", onOver, { passive: true });
+
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("pointerdown", onDown);
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerover", onOver);
     };
   }, []);
 

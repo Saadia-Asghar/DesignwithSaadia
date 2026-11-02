@@ -182,19 +182,27 @@ export default function Home() {
             </h2>
             <p className="hand obsessed">currently obsessed with…</p>
             <div className="now-list">
-              <div className="now-card">
-                <img src={asset("/work/mlsa-lnd.webp")} alt="" />
+              <Link className="now-card" href="/play/">
+                <span className="now-thumb t-canvas" aria-hidden>
+                  <svg viewBox="0 0 40 40">
+                    <path d="M9 15c0-5 4-8 9-8 4 0 7 2 8 5 4 0 6 3 6 6 0 4-3 6-7 6H12c-2 0-3-2-3-4 0-2 1-3 0-5z" className="cloud" />
+                    <circle cx="10" cy="28" r="2" className="dot" />
+                    <circle cx="7" cy="33" r="1.3" className="dot" />
+                    <rect x="17" y="25" width="17" height="11" rx="1.5" className="frame" />
+                    <path d="M20 33l4-4 3 3 2-2 3 3" className="mtn" />
+                  </svg>
+                </span>
                 <div>
-                  <b>Agents that remember</b>
-                  <span>Memory, RAG &amp; knowledge graphs</span>
+                  <b>Bringing my thoughts onto the canvas</b>
+                  <span>Translating purpose into design</span>
                   <em>
-                    <Equalizer /> From the Najoomi internship
+                    <Equalizer /> Sketch, shape, ship
                   </em>
                 </div>
                 <span className="now-plus" aria-hidden>
                   +
                 </span>
-              </div>
+              </Link>
             </div>
             <p className="hand obsessed obsessed-2">…and where to find me</p>
             <div className="now-list">
@@ -216,7 +224,11 @@ export default function Home() {
                 </span>
               </a>
               <a className="now-card" href={person.devPortfolio} target="_blank" rel="noreferrer">
-                <img src={asset("/work/callpilot.webp")} alt="" />
+                <span className="now-thumb t-code" aria-hidden>
+                  <svg viewBox="0 0 40 40">
+                    <path d="M14 13l-7 7 7 7M26 13l7 7-7 7M22 10l-4 20" />
+                  </svg>
+                </span>
                 <div>
                   <b>See my technical portfolio</b>
                   <span>AI products I built end to end</span>

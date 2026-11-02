@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Clock } from "@/components/clock";
+import { SoundToggle } from "@/components/sound-toggle";
 import { asset, person } from "@/lib/data";
 
 /** Name on the left, local time on the right. Scrolls away with the page. */
@@ -21,7 +22,10 @@ export function TopBar() {
         </span>
         {person.name}
       </Link>
-      <Clock />
+      <div className="topbar-right">
+        <SoundToggle />
+        <Clock />
+      </div>
     </div>
   );
 }
