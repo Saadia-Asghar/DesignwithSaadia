@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { AvatarPicker, ModeOrder, ModeProvider } from "@/components/avatar";
+import { Clock } from "@/components/clock";
 import { Desk } from "@/components/desk";
+import { Envelope } from "@/components/envelope";
 import { Gallery } from "@/components/gallery";
+import { Pass } from "@/components/pass";
 import { imageSize } from "@/lib/image-sizes";
 import {
   asset,
@@ -8,11 +12,13 @@ import {
   cases,
   certifications,
   designRoles,
+  ledger,
   moreTemplates,
   person,
   principles,
+  quirks,
+  sideQuests,
   steps,
-  stats,
   tools,
   visuals,
 } from "@/lib/data";
@@ -38,20 +44,121 @@ function Wave({ text }: { text: string }) {
   );
 }
 
-export default function Home() {
-  const canvaCount = visuals.length + moreTemplates.length;
-
+function ProductSection() {
   return (
-    <>
+    <section className="section" id="work">
+      <div className="wrap">
+        <div className="section-head reveal">
+          <div>
+            <span className="eyebrow">Product design · Figma</span>
+            <h2>
+              Selected <span className="serif">products</span>
+            </h2>
+          </div>
+          <p>Five product files. Scroll through the stack, then open any one for the full case.</p>
+        </div>
+
+        <div className="stackwrap">
+          {cases.map((c, i) => {
+            const col = panel[c.slug];
+            const [w, h] = imageSize[c.image] ?? [16, 10];
+            const portrait = h > w * 0.8;
+            return (
+              <Link
+                key={c.slug}
+                href={`/work/${c.slug}/`}
+                className="panel"
+                data-cursor="Open case"
+                style={{
+                  ["--bg" as string]: col.bg,
+                  ["--fg" as string]: col.fg,
+                  ["--sub" as string]: col.sub,
+                  ["--stage" as string]: col.stage,
+                  ["--i" as string]: i,
+                }}
+              >
+                <div className="panel-text">
+                  <span className="panel-n">
+                    {String(i + 1).padStart(2, "0")} <small>/ {String(cases.length).padStart(2, "0")}</small>
+                  </span>
+                  <div>
+                    <span className="panel-kicker">
+                      {c.kicker} · {c.year}
+                    </span>
+                    <h3>{c.title}</h3>
+                    <p>{c.oneLiner}</p>
+                    <div className="panel-foot">
+                      {c.award && <span className="panel-award">★ {c.award}</span>}
+                      <span className="panel-go">
+                        Read the case <span>→</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className={`panel-stage${portrait ? " portrait" : ""}`}>
+                  <img src={asset(c.image)} alt={`${c.title} screen from Figma`} width={w} height={h} loading="lazy" />
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VisualSection() {
+  const canvaCount = visuals.length + moreTemplates.length;
+  return (
+    <section className="section dark" id="visual">
+      <div className="outline-marquee" aria-hidden>
+        <div>
+          <span>Posters ✦ Decks ✦ Campaigns ✦ Signage ✦ Social ✦ </span>
+          <span>Posters ✦ Decks ✦ Campaigns ✦ Signage ✦ Social ✦ </span>
+        </div>
+      </div>
+      <div className="wrap">
+        <div className="visual-intro">
+          <div className="section-head reveal" style={{ marginBottom: 0 }}>
+            <div>
+              <span className="eyebrow">Visual design · Canva</span>
+              <h2>
+                The <span className="serif">poster</span> wall
+              </h2>
+              <p style={{ marginTop: 20 }}>
+                {canvaCount} templates for the teams I design for: recruitment drives, flagship events, signage, and
+                lesson decks. Play with the desk, or click any piece below to see it full size.
+              </p>
+            </div>
+          </div>
+          <div className="visual-desk">
+            <Desk />
+          </div>
+        </div>
+        <Gallery />
+      </div>
+    </section>
+  );
+}
+
+export default function Home() {
+  return (
+    <ModeProvider>
       {/* ---------- Hero ---------- */}
-      <section className="hero2">
-        <div className="wrap hero2-grid">
-          <div className="hero2-copy">
-            <span className="status">
-              <span className="dot" aria-hidden /> {person.location} · {person.title}
-            </span>
+      <section className="hero3">
+        <div className="wrap hero3-grid">
+          <div className="hero3-copy">
+            <div className="hello-row">
+              <Clock />
+              <span className="salaam">
+                <span lang="ur" dir="rtl">
+                  سلام
+                </span>{" "}
+                <span className="hand">Salaam, I&apos;m Saadia!</span>
+              </span>
+            </div>
             <h1>
-              Saadia designs things you{" "}
+              I design things you{" "}
               <span className="stop">
                 <span className="serif">stop</span>
                 <svg viewBox="0 0 220 24" preserveAspectRatio="none" aria-hidden>
@@ -63,31 +170,12 @@ export default function Home() {
             <p className="hero-lede">
               <strong>Products in Figma</strong> that won first place without a pitch.{" "}
               <strong>Posters, decks, and campaigns in Canva</strong> for Microsoft Club, UROG, ACM GIKI, and
-              PreMed.PK. And because I study data science, I can build the thing too.
+              PreMed.PK. I study data science at GIKI, so I can build the thing too.
             </p>
-            <div className="hero-actions">
-              <a className="btn btn-solid" href="#work" data-cursor="Go">
-                See the work <span className="arrow">↓</span>
-              </a>
-              <a className="btn btn-ghost" href={`mailto:${person.email}`} data-cursor="Hi!">
-                Say hello <span className="arrow">↗</span>
-              </a>
-            </div>
+            <AvatarPicker />
           </div>
-
-          <div className="hero2-desk">
-            <Desk />
-            <div className="badge" aria-hidden>
-              <svg viewBox="0 0 120 120">
-                <defs>
-                  <path id="circ" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
-                </defs>
-                <text>
-                  <textPath href="#circ">PRODUCT ✦ VISUAL ✦ DESIGNER ✦ GIKI ✦ </textPath>
-                </text>
-              </svg>
-              <span>✺</span>
-            </div>
+          <div className="hero3-pass">
+            <Pass />
           </div>
         </div>
       </section>
@@ -107,103 +195,95 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ---------- Stats ---------- */}
-      <section className="wrap" style={{ paddingTop: "clamp(56px, 8vw, 96px)" }}>
-        <div className="stats reveal">
-          {stats.map((s) => (
-            <div className="stat" key={s.label}>
-              <b>{s.value}</b>
-              <span>{s.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ---------- Product work: stacked panels ---------- */}
-      <section className="section" id="work">
+      {/* ---------- Results board ---------- */}
+      <section className="section" style={{ paddingBottom: 0 }}>
         <div className="wrap">
-          <div className="section-head reveal">
-            <div>
-              <span className="eyebrow">Product design · Figma</span>
-              <h2>
-                Selected <span className="serif">products</span>
-              </h2>
+          <div className="board reveal">
+            <div className="board-head">
+              <div>
+                <span className="board-kicker">
+                  RESULTS BOARD ·{" "}
+                  <span lang="ur" dir="rtl" className="board-ur">
+                    نتائج
+                  </span>
+                </span>
+                <h2>
+                  Five files, <span className="serif">one line each</span>
+                </h2>
+              </div>
+              <p>Pick a line to jump straight to the case.</p>
             </div>
-            <p>
-              Five product files, three of them placed in national or international competitions. Scroll through the
-              stack, then open any one for the full case.
-            </p>
-          </div>
-
-          <div className="stackwrap">
-            {cases.map((c, i) => {
-              const col = panel[c.slug];
-              const [w, h] = imageSize[c.image] ?? [16, 10];
-              const portrait = h > w * 0.8;
-              return (
-                <Link
-                  key={c.slug}
-                  href={`/work/${c.slug}/`}
-                  className="panel"
-                  data-cursor="Open case"
-                  style={{
-                    ["--bg" as string]: col.bg,
-                    ["--fg" as string]: col.fg,
-                    ["--sub" as string]: col.sub,
-                    ["--stage" as string]: col.stage,
-                    ["--i" as string]: i,
-                  }}
-                >
-                  <div className="panel-text">
-                    <span className="panel-n">
-                      {String(i + 1).padStart(2, "0")} <small>/ {String(cases.length).padStart(2, "0")}</small>
-                    </span>
-                    <div>
-                      <span className="panel-kicker">
-                        {c.kicker} · {c.year}
-                      </span>
-                      <h3>{c.title}</h3>
-                      <p>{c.oneLiner}</p>
-                      <div className="panel-foot">
-                        {c.award && <span className="panel-award">★ {c.award}</span>}
-                        <span className="panel-go">
-                          Read the case <span>→</span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className={`panel-stage${portrait ? " portrait" : ""}`}>
-                    <img src={asset(c.image)} alt={`${c.title} screen from Figma`} width={w} height={h} loading="lazy" />
-                  </div>
+            <div className="board-table" role="table" aria-label="Product results">
+              <div className="board-row board-th" role="row">
+                <span role="columnheader">No.</span>
+                <span role="columnheader">Product</span>
+                <span role="columnheader">Event</span>
+                <span role="columnheader">Date</span>
+                <span role="columnheader">Result</span>
+              </div>
+              {ledger.map((r) => (
+                <Link key={r.slug} href={`/work/${r.slug}/`} className="board-row" role="row" data-cursor="Open">
+                  <span role="cell" className="b-no">
+                    {String(r.no).padStart(2, "0")}
+                  </span>
+                  <span role="cell" className="b-title">
+                    {r.title}
+                  </span>
+                  <span role="cell" className="b-event">
+                    {r.event}
+                  </span>
+                  <span role="cell" className="b-date">
+                    {r.date}
+                  </span>
+                  <span role="cell" className="b-result">
+                    <b>{r.result}</b>
+                    <small>{r.note}</small>
+                  </span>
                 </Link>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ---------- Visual work ---------- */}
-      <section className="section dark" id="visual">
-        <div className="outline-marquee" aria-hidden>
-          <div>
-            <span>Posters ✦ Decks ✦ Campaigns ✦ Signage ✦ Social ✦ </span>
-            <span>Posters ✦ Decks ✦ Campaigns ✦ Signage ✦ Social ✦ </span>
-          </div>
-        </div>
+      {/* ---------- Work, ordered by the chosen avatar ---------- */}
+      <ModeOrder product={<ProductSection />} visual={<VisualSection />} />
+
+      {/* ---------- Side quests carousel ---------- */}
+      <section className="section quests">
         <div className="wrap">
           <div className="section-head reveal">
             <div>
-              <span className="eyebrow">Visual design · Canva</span>
+              <span className="eyebrow pixel-eyebrow">INVENTORY</span>
               <h2>
-                The <span className="serif">poster</span> wall
+                Side <span className="serif">quests</span>
               </h2>
             </div>
-            <p>
-              {canvaCount} templates for the teams I design for: recruitment drives, flagship events, signage, and
-              lesson decks. Click any piece to see it full size.
-            </p>
+            <p>Things I built and ran along the way, rough edges and all. Hover to pause.</p>
           </div>
-          <Gallery />
+        </div>
+        <div className="quest-track-clip">
+          <div className="quest-track">
+            {[0, 1].map((k) =>
+              sideQuests.map((q, i) => (
+                <a
+                  key={`${k}-${q.title}`}
+                  href={q.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`quest q${i % 4}`}
+                  aria-hidden={k === 1}
+                  tabIndex={k === 1 ? -1 : undefined}
+                  data-cursor="Visit"
+                >
+                  <span className="quest-tag">{q.tag}</span>
+                  <b>{q.title}</b>
+                  <span>{q.detail}</span>
+                  <span className="quest-go">↗</span>
+                </a>
+              )),
+            )}
+          </div>
         </div>
       </section>
 
@@ -253,6 +333,14 @@ export default function Home() {
               On hackathon teams I usually own the product and the interface, then help build it. That&apos;s how
               Vyrothon, CallPilot, and ChaInTicket+ placed.
             </p>
+            <div className="quirks">
+              {quirks.map((q) => (
+                <div className="quirk" key={q.label}>
+                  <span className="hand">{q.label}…</span>
+                  <p>{q.text}</p>
+                </div>
+              ))}
+            </div>
             <p className="sub-label">Toolbox</p>
             <ul className="pill-row stickers">
               {tools.map((t, i) => (
@@ -280,6 +368,23 @@ export default function Home() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* ---------- The year in an envelope ---------- */}
+      <section className="section year">
+        <div className="wrap year-grid">
+          <div className="reveal">
+            <span className="eyebrow">Life outside the pixels</span>
+            <h2 className="year-title">
+              The year in a <span className="serif">nutshell</span>
+              <span className="hand year-aside">(or an envelope)</span>
+            </h2>
+            <p className="year-copy">
+              Internships, fellowships, clubs, and the things I started. Open it up.
+            </p>
+          </div>
+          <Envelope />
         </div>
       </section>
 
@@ -312,8 +417,9 @@ export default function Home() {
             </a>
             <a href={person.phoneHref}>{person.phone}</a>
           </div>
+          <p className="hand sign-off">made with love (and a lot of Figma tabs) in Islamabad</p>
         </div>
       </section>
-    </>
+    </ModeProvider>
   );
 }

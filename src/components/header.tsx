@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { asset, person } from "@/lib/data";
+import { ThemeToggle } from "./theme-toggle";
 
 const links = [
   { href: "/#work", label: "Product" },
@@ -29,6 +30,7 @@ export function Header() {
           <span className="logo-mark">S</span>
           <span>Saadia Asghar</span>
         </Link>
+        <ThemeToggle />
         <button
           className="menu-btn"
           aria-label={open ? "Close menu" : "Open menu"}

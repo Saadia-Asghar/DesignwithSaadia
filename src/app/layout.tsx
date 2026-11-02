@@ -3,6 +3,11 @@ import "@fontsource-variable/bricolage-grotesque/wght.css";
 import "@fontsource-variable/inter/wght.css";
 import "@fontsource/instrument-serif/latin-400.css";
 import "@fontsource/instrument-serif/latin-400-italic.css";
+import "@fontsource/caveat/latin-400.css";
+import "@fontsource/caveat/latin-700.css";
+import "@fontsource/pixelify-sans/latin-400.css";
+import "@fontsource/pixelify-sans/latin-600.css";
+import "@fontsource/noto-nastaliq-urdu/arabic-400.css";
 import { Cursor } from "@/components/cursor";
 import { Header } from "@/components/header";
 import { ScrollFx } from "@/components/scroll-fx";
@@ -30,7 +35,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <script dangerouslySetInnerHTML={{ __html:
+              "document.documentElement.classList.add('js');try{if(localStorage.getItem('theme')==='dark')document.documentElement.dataset.theme='dark'}catch(e){}" }} />
       </head>
       <body>
         <a href="#main" className="sr-skip">

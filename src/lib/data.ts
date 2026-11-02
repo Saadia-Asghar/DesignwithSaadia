@@ -299,3 +299,41 @@ export const certifications = [
   "AI Skills for Students · Canva",
   "AI in the Classroom · Canva",
 ] as const;
+
+/* ---------- Results board (one row per product file) ---------- */
+export const ledger = [
+  { no: 1, slug: "vyrothon", title: "Vyrothon", event: "Vyrothon · NSTP", date: "Apr 2026", result: "1st", note: "Product design round" },
+  { no: 2, slug: "callpilot", title: "CallPilot", event: "MIT Hack-Nation", date: "Jan 2026", result: "Top 10", note: "Global hackathon" },
+  { no: 3, slug: "chainticket", title: "ChaInTicket+", event: "BASED Pakistan", date: "Dec 2025", result: "3rd", note: "Web3 nationwide" },
+  { no: 4, slug: "privyhealth", title: "PrivyHealth", event: "Entangled Hackathon", date: "2026", result: "Built", note: "25 screens in Figma" },
+  { no: 5, slug: "moodmaze", title: "MoodMaze", event: "Self-initiated", date: "2025", result: "Shipped", note: "Live on Vercel" },
+] as const;
+
+/* ---------- Side quests: things built along the way ---------- */
+export const sideQuests = [
+  { title: "Darzi Khata", detail: "Offline-first ledger for a tailor, in Urdu and English.", href: "https://github.com/Saadia-Asghar/darzi-khata", tag: "Build" },
+  { title: "Hunar Naqsha", detail: "A map between people who need a craft and the makers who have it.", href: "https://github.com/Saadia-Asghar/Hunar-Naqsha", tag: "Google AI Seekho" },
+  { title: "Skill Issue", detail: "Learning platform that finds the teaching style that sticks. 2nd at Hack@GIKI.", href: "https://skill-issue-s1oh.vercel.app/", tag: "2nd place" },
+  { title: "EcoBite", detail: "Surplus food, matched to people who can use it. Imagine Cup build.", href: "https://ecobite-iota.vercel.app", tag: "Imagine Cup" },
+  { title: "GIKI-Connect", detail: "Measures how siloed campus friendships are, then suggests a way out.", href: "https://saadia-asghar.github.io/Giki-Connect/", tag: "Data science" },
+  { title: "EffortScope", detail: "Who is actually carrying the group project? A local-only tracker.", href: "https://github.com/Saadia-Asghar/Effort_Scope", tag: "Build" },
+  { title: "DonorBridge", detail: "An assistant that answers donor questions straight from the database.", href: "https://github.com/Saadia-Asghar/DonorBridge", tag: "AI" },
+  { title: "HackSummer", detail: "Organised the Islamabad edition: about a hundred people in a room, shipping.", href: "https://www.linkedin.com/in/saadia-asghar", tag: "Organiser" },
+] as const;
+
+/* ---------- The year in an envelope ---------- */
+export const yearNotes = [
+  { when: "Apr", text: "Won the product design round at Vyrothon, with no live pitch." },
+  { when: "May", text: "Became Director of Marketing at UROG and a Replit Campus Ambassador." },
+  { when: "Jun", text: "Joined the Comebck Pakistan AI fellowship, and finished first in the cohort." },
+  { when: "Jun", text: "Started as Canva Campus Ambassador & Community Lead at GIKI." },
+  { when: "Jul", text: "AI intern at Najoomi: agents that remember, RAG, and knowledge graphs." },
+  { when: "Aug", text: "Founded Discuss, for the part after the hackathon." },
+  { when: "Sep", text: "Head of Marketing at the Microsoft Club, GIKI." },
+  { when: "Oct", text: "Sponsorship Lead for Hult Prize at GIKI." },
+] as const;
+
+export const quirks = [
+  { label: "Currently obsessed with", text: "Agent memory and knowledge graphs, from the Najoomi internship." },
+  { label: "Random fact", text: "I founded a community for what happens after the hackathon ends." },
+] as const;

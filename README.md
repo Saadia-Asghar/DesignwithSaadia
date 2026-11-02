@@ -4,6 +4,9 @@ The design portfolio of **Saadia Asghar**, product & visual designer. Figma prod
 
 - **Product design (Figma):** Vyrothon (1st, product design), CallPilot (Top 10, MIT Hack-Nation), ChaInTicket+ (3rd, BASED Pakistan), PrivyHealth, MoodMaze. Each has its own case-study page at `/work/<slug>/`.
 - **Visual design (Canva):** posters, banners, signage, and lesson decks for Microsoft Club GIKI, UROG, ACM GIKI, and PreMed.PK, with team filters and a full-size viewer.
+- An all-access event pass on a swinging lanyard (click it to turn it over), a live Islamabad clock, and an Urdu greeting.
+- "Choose your avatar": visitors pick Product or Visual designer, and that section moves first.
+- A results board with one line per product file, a side-quests carousel, sticky-note process, quirk cards, a year-in-an-envelope letter, and a dark mode.
 - Process, design roles, tools, certifications, and contact.
 
 Stack: Next.js (static export), TypeScript, hand-written CSS, self-hosted fonts (Bricolage Grotesque, Instrument Serif, Inter).
