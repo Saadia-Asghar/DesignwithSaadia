@@ -90,12 +90,12 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         </div>
       </dl>
 
-      <section className="case-sec">
+      <section className="case-sec reveal">
         <h2 className="hand">The problem</h2>
         <p>{c.problem}</p>
       </section>
 
-      <section className="case-sec">
+      <section className="case-sec reveal">
         <h2 className="hand">What I designed</h2>
         <ol className="case-list">
           {c.approach.map((a) => (
@@ -104,7 +104,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         </ol>
       </section>
 
-      <section className="case-sec">
+      <section className="case-sec reveal">
         <h2 className="hand">In the file</h2>
         <div className="chips">
           {c.screens.map((s) => (
@@ -114,7 +114,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
       </section>
 
       {c.metrics && (
-        <section className="case-sec">
+        <section className="case-sec reveal">
           <h2 className="hand">The outcome</h2>
           <div className="results">
             {c.metrics.map((m) => (

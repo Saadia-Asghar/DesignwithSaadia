@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Equalizer, Scribble, StickerStrip, WaveHand } from "@/components/doodles";
 import { Scene } from "@/components/scene";
 import { imageSize } from "@/lib/image-sizes";
 import { asset, cases, visuals } from "@/lib/data";
@@ -89,7 +90,9 @@ export default function Home() {
       {/* ---------- Hero ---------- */}
       <section className="hero">
         <div className="hero-copy">
-          <h1 className="hand">Hi, I&apos;m Saadia!</h1>
+          <h1 className="hand hello">
+            <span className="write-on">Hi, I&apos;m Saadia!</span> <WaveHand />
+          </h1>
           <p className="hero-bio">
             A product and visual designer who also builds. I design product prototypes in Figma and posters, decks,
             and campaigns in Canva, while studying data science at GIKI. Focused on interfaces that explain themselves.
@@ -112,17 +115,22 @@ export default function Home() {
         <Scene />
       </section>
 
+      <StickerStrip />
+
       {/* ---------- Projects ---------- */}
       <section className="projects" id="work">
-        <div className="projects-head">
-          <h2 className="hand">Projects</h2>
+        <div className="projects-head reveal">
+          <h2 className="hand underlined">
+            Projects
+            <Scribble />
+          </h2>
           <span className="new-pill">
             Product design in Figma <em>New!</em>
           </span>
         </div>
 
         <div className="grid">
-          {cases.map((c) => {
+          {cases.map((c, idx) => {
             const l = look[c.slug];
             const [w, h] = imageSize[c.image] ?? [16, 10];
             return (
@@ -130,7 +138,7 @@ export default function Home() {
                 key={c.slug}
                 href={`/work/${c.slug}/`}
                 className={`card reveal ink-${l.ink}${c.slug === "vyrothon" ? " grainy" : ""}`}
-                style={{ background: l.bg }}
+                style={{ background: l.bg, ["--d" as string]: `${(idx % 2) * 120}ms` }}
               >
                 <Tags tags={l.tags} />
                 <h3>{c.title}</h3>
@@ -142,7 +150,7 @@ export default function Home() {
             );
           })}
 
-          <Link href="/play/" className="card reveal ink-dark card-play" style={{ background: "var(--c-butter)" }}>
+          <Link href="/play/" className="card reveal ink-dark card-play" style={{ background: "var(--c-butter)", ["--d" as string]: "120ms" }}>
             <Tags
               tags={[
                 { label: "Visual Design", tone: "orange" },
@@ -168,14 +176,19 @@ export default function Home() {
       <section className="interest">
         <div className="interest-grid">
           <div>
-            <h2 className="hand">Areas of interest</h2>
+            <h2 className="hand underlined reveal">
+              Areas of interest
+              <Scribble color="#f4e5b5" variant={1} />
+            </h2>
             <p className="hand obsessed">currently obsessed with…</p>
             <div className="now-card">
               <img src={asset("/work/mlsa-lnd.webp")} alt="" />
               <div>
                 <b>Agents that remember</b>
                 <span>Memory, RAG &amp; knowledge graphs</span>
-                <em>From the Najoomi internship</em>
+                <em>
+                  <Equalizer /> From the Najoomi internship
+                </em>
               </div>
               <span className="now-plus" aria-hidden>
                 +
@@ -197,7 +210,7 @@ export default function Home() {
         </div>
 
         <div className="interest-floor">
-          <svg className="doodle-book" viewBox="0 0 220 170" aria-hidden>
+          <svg className="doodle-book reveal" viewBox="0 0 220 170" aria-hidden>
             <path d="M20 150 L120 150 L120 70 L20 70 Z" />
             <path d="M120 150 L200 150 L200 70 L120 70" />
             <path d="M36 92h66M36 108h52M36 124h60" />
@@ -207,7 +220,7 @@ export default function Home() {
             <path d="M206 10 L214 18" />
           </svg>
           <div className="floor-line" />
-          <div className="fact">
+          <div className="fact reveal">
             <span>Random fact:</span>
             <b className="hand">I founded a community for what happens after the hackathon</b>
             <svg viewBox="0 0 120 60" aria-hidden>

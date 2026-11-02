@@ -5,6 +5,7 @@ import "@fontsource/work-sans/latin-500.css";
 import "@fontsource/work-sans/latin-600.css";
 import "@fontsource/dm-mono/latin-400.css";
 import { ContactFooter, PillNav, TopBar } from "@/components/chrome";
+import { Fx } from "@/components/fx";
 import { RevealObserver } from "@/components/reveal";
 import { person } from "@/lib/data";
 import "./globals.css";
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <ContactFooter />
         <RevealObserver />
+        <Fx />
       </body>
     </html>
   );

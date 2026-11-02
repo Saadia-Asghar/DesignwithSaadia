@@ -28,7 +28,7 @@ export default function About() {
         </div>
       </header>
 
-      <div className="about-block">
+      <div className="about-block reveal">
         <h2 className="hand">Where I design</h2>
         <ul className="roles">
           {designRoles.map((r) => (
@@ -44,7 +44,7 @@ export default function About() {
         </ul>
       </div>
 
-      <div className="about-block">
+      <div className="about-block reveal">
         <h2 className="hand">Results so far</h2>
         <div className="results">
           {ledger.map((r) => (
@@ -59,7 +59,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="about-block">
+      <div className="about-block reveal">
         <h2 className="hand">How I work</h2>
         <div className="steps">
           {steps.map((s) => (
@@ -73,7 +73,7 @@ export default function About() {
         <p className="principles hand">{principles.join("  ·  ")}</p>
       </div>
 
-      <div className="about-block two">
+      <div className="about-block two reveal">
         <div>
           <h2 className="hand">Toolbox</h2>
           <div className="chips">
@@ -92,7 +92,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="about-block">
+      <div className="about-block reveal">
         <h2 className="hand">2026 so far</h2>
         <ol className="year">
           {yearNotes.map((n, i) => (

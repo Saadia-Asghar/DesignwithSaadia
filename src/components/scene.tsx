@@ -53,13 +53,22 @@ export function Scene() {
     setDark(document.documentElement.dataset.theme === "dark");
   }, []);
 
-  const toggleLamp = () => {
+  const toggleLamp = (e: React.MouseEvent<HTMLButtonElement>) => {
     const next = !dark;
-    setDark(next);
-    document.documentElement.dataset.theme = next ? "dark" : "light";
-    try {
-      localStorage.setItem("theme", next ? "dark" : "light");
-    } catch {}
+    const apply = () => {
+      setDark(next);
+      document.documentElement.dataset.theme = next ? "dark" : "light";
+      try {
+        localStorage.setItem("theme", next ? "dark" : "light");
+      } catch {}
+    };
+    const root = document.documentElement;
+    root.style.setProperty("--vx", `${e.clientX}px`);
+    root.style.setProperty("--vy", `${e.clientY}px`);
+    const doc = document as Document & { startViewTransition?: (cb: () => void) => unknown };
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (doc.startViewTransition && !reduce) doc.startViewTransition(apply);
+    else apply();
   };
 
   return (
@@ -69,61 +78,63 @@ export function Scene() {
         <path className="cone" d="M572 206 L520 380 L680 380 L628 206 Z" />
 
         {/* floor */}
-        <path className="ln" d="M-40 381 C 120 379, 300 383, 470 380 S 640 381, 700 380" />
+        <path pathLength={1} className="ln" d="M-40 381 C 120 379, 300 383, 470 380 S 640 381, 700 380" />
 
         {/* plant */}
-        <path className="ln fill" d="M22 338 L74 338 L66 380 L30 380 Z" />
-        <path className="ln" d="M48 338 C 46 310, 30 296, 18 292" />
-        <path className="ln" d="M48 338 C 52 306, 70 290, 84 288" />
-        <path className="ln" d="M48 338 C 48 300, 48 284, 50 268" />
-        <path className="ln leaf" d="M18 292 C 26 284, 38 288, 36 300 C 26 302, 20 298, 18 292 Z" />
-        <path className="ln leaf" d="M84 288 C 78 280, 64 284, 66 296 C 76 298, 82 294, 84 288 Z" />
-        <path className="ln leaf" d="M50 268 C 42 262, 40 276, 48 284 C 56 278, 56 270, 50 268 Z" />
+        <path pathLength={1} className="ln fill" d="M22 338 L74 338 L66 380 L30 380 Z" />
+        <path pathLength={1} className="ln" d="M48 338 C 46 310, 30 296, 18 292" />
+        <path pathLength={1} className="ln" d="M48 338 C 52 306, 70 290, 84 288" />
+        <path pathLength={1} className="ln" d="M48 338 C 48 300, 48 284, 50 268" />
+        <path pathLength={1} className="ln leaf" d="M18 292 C 26 284, 38 288, 36 300 C 26 302, 20 298, 18 292 Z" />
+        <path pathLength={1} className="ln leaf" d="M84 288 C 78 280, 64 284, 66 296 C 76 298, 82 294, 84 288 Z" />
+        <path pathLength={1} className="ln leaf" d="M50 268 C 42 262, 40 276, 48 284 C 56 278, 56 270, 50 268 Z" />
 
         {/* desk */}
-        <path className="ln fill" d="M150 300 L560 300 L560 312 L150 312 Z" />
-        <path className="ln" d="M168 312 L168 380" />
-        <path className="ln fill" d="M456 312 L548 312 L548 380 L456 380 Z" />
+        <path pathLength={1} className="ln fill" d="M150 300 L560 300 L560 312 L150 312 Z" />
+        <path pathLength={1} className="ln" d="M168 312 L168 380" />
+        <path pathLength={1} className="ln fill" d="M456 312 L548 312 L548 380 L456 380 Z" />
 
         {/* monitor stand */}
-        <path className="ln fill" d="M372 262 L390 262 L392 296 L370 296 Z" />
-        <path className="ln fill" d="M338 296 L424 296 L428 300 L334 300 Z" />
+        <path pathLength={1} className="ln fill" d="M372 262 L390 262 L392 296 L370 296 Z" />
+        <path pathLength={1} className="ln fill" d="M338 296 L424 296 L428 300 L334 300 Z" />
 
         {/* monitor */}
-        <rect className="ln screen" x="160" y="12" width="440" height="250" rx="14" />
+        <rect pathLength={1} className="ln screen" x="160" y="12" width="440" height="250" rx="14" />
 
         {/* chai on the desk */}
-        <path className="ln fill" d="M498 274 L526 274 L523 298 L501 298 Z" />
-        <path className="ln" d="M526 280 C 536 280, 536 292, 524 292" />
+        <path pathLength={1} className="ln fill" d="M498 274 L526 274 L523 298 L501 298 Z" />
+        <path pathLength={1} className="ln" d="M526 280 C 536 280, 536 292, 524 292" />
         <path className="ln steam s1" d="M506 266 C 502 258, 510 254, 506 246" />
         <path className="ln steam s2" d="M516 266 C 512 258, 520 254, 516 246" />
 
         {/* chair + person, seen from behind */}
-        <path className="ln" d="M176 344 L176 370" />
-        <path className="ln" d="M150 376 L202 376 M176 370 L156 380 M176 370 L196 380" />
-        <path className="ln skin" d="M126 300 C 128 262, 150 246, 176 246 C 202 246, 224 262, 226 300 Z" />
-        <circle className="ln skin" cx="176" cy="218" r="26" />
-        <path className="ln hair" d="M150 214 C 150 192, 166 186, 178 188 C 196 188, 204 202, 202 216 C 196 206, 184 200, 170 204 C 160 206, 154 210, 150 214 Z" />
-        <circle className="ln hair" cx="178" cy="184" r="11" />
-        <path className="ln fill" d="M118 272 C 118 258, 130 252, 176 252 C 222 252, 234 258, 234 272 L 234 330 C 234 342, 226 346, 176 346 C 126 346, 118 342, 118 330 Z" />
-        <path className="ln" d="M150 268 L150 330 M202 268 L202 330" />
+        <path pathLength={1} className="ln" d="M176 344 L176 370" />
+        <path pathLength={1} className="ln" d="M150 376 L202 376 M176 370 L156 380 M176 370 L196 380" />
+        <path pathLength={1} className="ln skin" d="M126 300 C 128 262, 150 246, 176 246 C 202 246, 224 262, 226 300 Z" />
+        <g className="head">
+        <circle pathLength={1} className="ln skin" cx="176" cy="218" r="26" />
+        <path pathLength={1} className="ln hair" d="M150 214 C 150 192, 166 186, 178 188 C 196 188, 204 202, 202 216 C 196 206, 184 200, 170 204 C 160 206, 154 210, 150 214 Z" />
+        <circle pathLength={1} className="ln hair" cx="178" cy="184" r="11" />
+        </g>
+        <path pathLength={1} className="ln fill" d="M118 272 C 118 258, 130 252, 176 252 C 222 252, 234 258, 234 272 L 234 330 C 234 342, 226 346, 176 346 C 126 346, 118 342, 118 330 Z" />
+        <path pathLength={1} className="ln" d="M150 268 L150 330 M202 268 L202 330" />
 
         {/* lamp */}
-        <path className="ln" d="M600 206 L600 378" />
-        <path className="ln fill" d="M582 378 C 582 370, 618 370, 618 378 Z" />
-        <path className="ln shade" d="M574 206 L626 206 L614 168 L586 168 Z" />
+        <path pathLength={1} className="ln" d="M600 206 L600 378" />
+        <path pathLength={1} className="ln fill" d="M582 378 C 582 370, 618 370, 618 378 Z" />
+        <path pathLength={1} className="ln shade" d="M574 206 L626 206 L614 168 L586 168 Z" />
       </svg>
 
       {/* the four app tiles on the monitor */}
       <div className="screen-tiles">
-        {tiles.map((t) =>
+        {tiles.map((t, i) =>
           "external" in t ? (
-            <a key={t.key} className="tile-app" href={asset(t.href)} target="_blank" rel="noreferrer" style={{ background: t.color }}>
+            <a key={t.key} className="tile-app" href={asset(t.href)} target="_blank" rel="noreferrer" style={{ background: t.color, ["--i" as string]: i }}>
               {faces[t.key]}
               <span>{t.label}</span>
             </a>
           ) : (
-            <Link key={t.key} className="tile-app" href={t.href} style={{ background: t.color }}>
+            <Link key={t.key} className="tile-app" href={t.href} style={{ background: t.color, ["--i" as string]: i }}>
               {faces[t.key]}
               <span>{t.label}</span>
             </Link>

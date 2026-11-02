@@ -10,6 +10,7 @@ Layout: a paper-and-ink site with four flat colours (blue, yellow, green, red) a
 - **Play** (`/play/`): the Canva gallery with team filters and a full-size viewer.
 - **About Me** (`/about/`): design roles, results, process, toolbox, certifications, and 2026 so far.
 - **Footer:** a message box that opens your email app, plus links.
+- **Motion:** the desk scene draws itself in line by line, the tiles pop onto the monitor and blink, the greeting writes itself on with a waving hand, a sticker strip slides past, headings get a hand-drawn underline as they scroll in, project cards tilt toward the pointer, clicks leave doodle sparkles, a pencil draws the scroll progress across the top, pages slide in, and the lamp turns the lights off with a circle that grows out of it. All of it switches off for visitors who ask for reduced motion.
 
 Stack: Next.js (static export), TypeScript, hand-written CSS, self-hosted fonts (Gochi Hand, Work Sans, DM Mono).
 
