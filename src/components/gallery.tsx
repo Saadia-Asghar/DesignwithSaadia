@@ -59,6 +59,7 @@ export function Gallery() {
           <button
             key={`${filter}-${v.id}`}
             className="tile"
+            data-cursor="View"
             style={{ animationDelay: `${Math.min(i, 10) * 40}ms` }}
             onClick={() => setActive(i)}
             aria-label={`Open ${v.title}, ${v.subtitle}`}

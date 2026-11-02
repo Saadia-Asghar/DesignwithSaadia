@@ -3,7 +3,9 @@ import "@fontsource-variable/bricolage-grotesque/wght.css";
 import "@fontsource-variable/inter/wght.css";
 import "@fontsource/instrument-serif/latin-400.css";
 import "@fontsource/instrument-serif/latin-400-italic.css";
+import { Cursor } from "@/components/cursor";
 import { Header } from "@/components/header";
+import { ScrollFx } from "@/components/scroll-fx";
 import { RevealObserver } from "@/components/reveal";
 import { person } from "@/lib/data";
 import "./globals.css";
@@ -47,6 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </footer>
         <RevealObserver />
+        <ScrollFx />
+        <Cursor />
+        <div className="grain" aria-hidden />
       </body>
     </html>
   );

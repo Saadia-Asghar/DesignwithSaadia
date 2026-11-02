@@ -32,9 +32,9 @@ export const awards = [
 
 export const stats = [
   { value: "1st", label: "Vyrothon product design round, NSTP" },
-  { value: "30+", label: "Assets shipped for PreMed.PK" },
-  { value: "40%", label: "Lift in engagement on the PreMed work" },
-  { value: "5", label: "Teams I design for, on campus and off" },
+  { value: "Top 10", label: "MIT Hack-Nation, with CallPilot" },
+  { value: "3rd", label: "BASED Pakistan, with ChaInTicket+" },
+  { value: "25", label: "Canva templates across four teams" },
 ] as const;
 
 export type Case = {
