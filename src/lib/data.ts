@@ -216,6 +216,12 @@ export const visuals: Visual[] = [
   { id: "urog-ec", chapter: "urog", title: "Executive council 2026–27", subtitle: "Meet-the-team announcement", image: "/work/urog-ec.webp", href: "https://canva.link/3dypggbzg7lvfjj", shape: "wide", feature: true },
   { id: "acm-wic", chapter: "acm", title: "Women in Computing", subtitle: "Flagship event poster", image: "/work/acm-wic.webp", href: "https://canva.link/e92p1vc5liwinkp", shape: "wide", feature: true },
   { id: "premed-edu-1", chapter: "premed", title: "Abnormal Development", subtitle: "SnapCourses lesson deck", image: "/work/premed-edu-1.webp", href: "https://canva.link/2gr7145jlbx0ttr", shape: "wide", feature: true },
+  { id: "acm-apsc", chapter: "acm", title: "SOFTCOM '26", subtitle: "All-Pakistan Software Competition poster", image: "/work/acm-apsc.webp", href: "https://canva.link/at2vzf2pdvwjy8r", shape: "tall" },
+  { id: "mlsa-ldp", chapter: "mlsa", title: "Learning with Linux", subtitle: "Learning & Development session poster", image: "/work/mlsa-ldp.webp", href: "https://canva.link/27cdkido37176p0", shape: "wide" },
+  { id: "acm-carbonteq", chapter: "acm", title: "Carbonteq session", subtitle: "Industry partner session banner", image: "/work/acm-carbonteq.webp", href: "https://canva.link/obnr96908orfwio", shape: "wide" },
+  { id: "mlsa-info", chapter: "mlsa", title: "MLSA info session", subtitle: "Event poster · Join the community", image: "/work/mlsa-info.webp", href: "https://canva.link/y7y0b9un3uyj6sc", shape: "wide" },
+  { id: "mlsa-card", chapter: "mlsa", title: "Member card", subtitle: "Microsoft Club identity card", image: "/work/mlsa-card.webp", href: "https://canva.link/nni270xk4980970", shape: "tall" },
+  { id: "mlsa-cert", chapter: "mlsa", title: "Certificate of induction", subtitle: "Member certificate template", image: "/work/mlsa-cert.webp", href: "https://canva.link/et94srh8680cbzs", shape: "wide" },
   { id: "mlsa-panaflex", chapter: "mlsa", title: "We are MLSA", subtitle: "Large-format panaflex signage", image: "/work/mlsa-panaflex.webp", href: "https://canva.link/nfvzr08alsqq9r9", shape: "wide" },
   { id: "urog-research-201", chapter: "urog", title: "Research 201", subtitle: "Session poster · year two, first session", image: "/work/urog-research-201.webp", href: "https://canva.link/c9b28qkhemyp2qw", shape: "tall" },
   { id: "acm-induction", chapter: "acm", title: "Volunteer call '25", subtitle: "Induction campaign", image: "/work/acm-induction.webp", href: "https://canva.link/nllc230n1faj0h6", shape: "wide" },
@@ -234,14 +240,8 @@ export const visuals: Visual[] = [
 ];
 
 /** Canva templates without a preview image yet; shown as a link list. */
-export const moreTemplates: Visual[] = [
-  { id: "acm-apsc", chapter: "acm", title: "All-Pakistan Software Competition", subtitle: "Campaign collateral", href: "https://canva.link/at2vzf2pdvwjy8r", shape: "wide" },
-  { id: "acm-carbonteq", chapter: "acm", title: "Carbonteq", subtitle: "Sponsor collateral", href: "https://canva.link/obnr96908orfwio", shape: "wide" },
-  { id: "mlsa-ldp", chapter: "mlsa", title: "Learning & Development", subtitle: "Session poster", href: "https://canva.link/27cdkido37176p0", shape: "wide" },
-  { id: "mlsa-card", chapter: "mlsa", title: "Member card", subtitle: "Club identity card", href: "https://canva.link/nni270xk4980970", shape: "wide" },
-  { id: "mlsa-info", chapter: "mlsa", title: "Info session", subtitle: "Event poster", href: "https://canva.link/y7y0b9un3uyj6sc", shape: "wide" },
-  { id: "mlsa-cert", chapter: "mlsa", title: "Member certificate", subtitle: "Certificate template", href: "https://canva.link/et94srh8680cbzs", shape: "wide" },
-];
+/** Canva templates without a preview image yet; shown as a link list. (All have images now.) */
+export const moreTemplates: Visual[] = [];
 
 export const steps = [
   { n: "01", title: "Understand", body: "Read the brief twice and write the problem in one sentence. If it doesn't fit, the screens are early." },

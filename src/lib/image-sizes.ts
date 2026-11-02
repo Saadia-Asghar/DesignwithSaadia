@@ -95,5 +95,11 @@ export const imageSize: Record<string, [number, number]> = {
   "/work/vyrothon.webp": [
     515,
     607
-  ]
+  ],
+  "/work/acm-apsc.webp": [1024, 1448],
+  "/work/acm-carbonteq.webp": [1024, 273],
+  "/work/mlsa-ldp.webp": [1024, 455],
+  "/work/mlsa-card.webp": [1024, 1792],
+  "/work/mlsa-info.webp": [1024, 427],
+  "/work/mlsa-cert.webp": [1024, 724]
 };

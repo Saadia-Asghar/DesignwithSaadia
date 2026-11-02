@@ -2448,3 +2448,57 @@ a.result:hover {
     clip-path: none;
   }
 }
+
+/* ---------- "currently obsessed" list ---------- */
+.now-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-left: 18%;
+}
+
+.now-list .now-card {
+  margin-left: 0;
+  color: #fff;
+}
+
+a.now-card:hover {
+  box-shadow: 0 0 0 1.5px #fff, 4px 4px 0 #141414;
+}
+
+.obsessed-2 {
+  margin-top: 28px;
+}
+
+.now-thumb {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  flex: none;
+}
+
+.t-linkedin {
+  background: #0a66c2;
+}
+
+.t-linkedin svg {
+  width: 26px;
+  height: 26px;
+  fill: #fff;
+}
+
+.now-list .now-card:nth-child(2) {
+  transform: rotate(1deg);
+}
+
+.now-list .now-card:nth-child(2):hover {
+  transform: rotate(-1deg) scale(1.03);
+}
+
+@media (max-width: 760px) {
+  .now-list {
+    margin-left: 0;
+  }
+}

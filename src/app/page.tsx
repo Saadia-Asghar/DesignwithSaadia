@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Equalizer, Scribble, StickerStrip, WaveHand } from "@/components/doodles";
 import { Scene } from "@/components/scene";
 import { imageSize } from "@/lib/image-sizes";
-import { asset, cases, visuals } from "@/lib/data";
+import { asset, cases, person, visuals } from "@/lib/data";
 
 type Tag = { label: string; tone: "green" | "blue" | "orange" | "black" | "yellow" };
 
@@ -181,18 +181,53 @@ export default function Home() {
               <Scribble color="#f4e5b5" variant={1} />
             </h2>
             <p className="hand obsessed">currently obsessed with…</p>
-            <div className="now-card">
-              <img src={asset("/work/mlsa-lnd.webp")} alt="" />
-              <div>
-                <b>Agents that remember</b>
-                <span>Memory, RAG &amp; knowledge graphs</span>
-                <em>
-                  <Equalizer /> From the Najoomi internship
-                </em>
+            <div className="now-list">
+              <div className="now-card">
+                <img src={asset("/work/mlsa-lnd.webp")} alt="" />
+                <div>
+                  <b>Agents that remember</b>
+                  <span>Memory, RAG &amp; knowledge graphs</span>
+                  <em>
+                    <Equalizer /> From the Najoomi internship
+                  </em>
+                </div>
+                <span className="now-plus" aria-hidden>
+                  +
+                </span>
               </div>
-              <span className="now-plus" aria-hidden>
-                +
-              </span>
+            </div>
+            <p className="hand obsessed obsessed-2">…and where to find me</p>
+            <div className="now-list">
+              <a className="now-card" href={person.linkedin} target="_blank" rel="noreferrer">
+                <span className="now-thumb t-linkedin" aria-hidden>
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4v11H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1v5.36h-4v-4.75c0-1.13-.02-2.59-1.58-2.59-1.58 0-1.82 1.23-1.82 2.5v4.84h-4z" />
+                  </svg>
+                </span>
+                <div>
+                  <b>Saadia on LinkedIn</b>
+                  <span>Roles, hackathon wins &amp; campus events</span>
+                  <em>
+                    <Equalizer /> linkedin.com/in/saadia-asghar
+                  </em>
+                </div>
+                <span className="now-plus" aria-hidden>
+                  ↗
+                </span>
+              </a>
+              <a className="now-card" href={person.devPortfolio} target="_blank" rel="noreferrer">
+                <img src={asset("/work/callpilot.webp")} alt="" />
+                <div>
+                  <b>See my technical portfolio</b>
+                  <span>AI products I built end to end</span>
+                  <em>
+                    <Equalizer /> Code, demos &amp; hackathon builds
+                  </em>
+                </div>
+                <span className="now-plus" aria-hidden>
+                  ↗
+                </span>
+              </a>
             </div>
           </div>
           <div className="interest-copy">
